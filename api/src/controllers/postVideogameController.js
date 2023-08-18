@@ -1,7 +1,7 @@
 const { Videogame } = require("../db");
 const { Op } = require("sequelize");
 
-const postVideogame = async (name, description, platforms, image, released, rating) => {
+const postVideogame = async (name, description, genres, platforms, image, released, rating) => {
     try {
         let [vgame, created] = await Videogame.findOrCreate({
             where: {
@@ -12,13 +12,14 @@ const postVideogame = async (name, description, platforms, image, released, rati
             defaults: {
                 name,
                 description,
+                genres,
                 platforms,
                 image,
                 released,
                 rating,
             }
         });
-        
+
         if(!created) throw new Error("The videogame already exists");
         return vgame;
 

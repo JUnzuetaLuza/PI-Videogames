@@ -49,7 +49,6 @@ const getVideogames = async () => {
         return [...mapedApi, ...videogamesDB];
     } catch (error) {
         throw new Error(error);
-        //throw new Error("Oops... We cannot get the games :(");
     };
 };
 
